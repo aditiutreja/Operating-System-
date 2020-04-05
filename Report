@@ -1,0 +1,707 @@
+DESCRIPTION:-
+
+Shortest job first (SJF) or shortest job next, is a scheduling policy that selects the waiting process with the smallest execution time to execute next. It has the advantage of having a minimum average waiting time among all scheduling algorithms. It is a Greedy Algorithm. It may cause starvation if shorter processes keep on coming but this problem can be solved by the process of ageing.
+SJF can be used in specialized environment where accurate estimates of running time are available.
+1.	Completion Time: Time at which process completes its execution.
+2.	Turn Around Time: Time Difference between completion time and arrival time. Turn Around Time = Completion Time – Arrival Time
+3.	Waiting Time(WT): Time Difference between turnaround time and burst time.
+Waiting Time = Turn Around Time – Burst Time
+4.	Arrival Time: Time at which process arrives. In this question we are given with the same arrival time for all the processes. 
+There are basically two types of SJF methods:
+1) Non-Preemptive SJF:-  In non-preemptive scheduling, once the CPU cycle is allocated to process, the process holds it till it reaches a waiting state or terminated.
+2) Preemptive SJF:-  In Preemptive SJF Scheduling, jobs are put into the ready queue as they come.
+Shortest Job First can improve process throughput by making sure that shorter jobs are executed first, hence possibly have a short turnaround time. It is frequently used for long term scheduling. Probably optimal with regard to average turnaround time.
+
+
+
+
+
+
+Algorithm:
+
+1.	Traverse until all process gets completely executed.
+2.	Find process with minimum remaining time at every single time lap.
+3.	Reduce its time by 1.
+4.	Check if its remaining time becomes 0.
+5.	Increment the counter of process completion.
+6.	Completion time of current process = current time + 1
+7.	Calculate waiting time for each completed process.
+WT= turnaround time – Burst time
+8.	Increment time lap by 1.
+9.	Find average waiting time.
+
+
+Complexity:
+
+Mention all the complexities line to line in the code. Overall Complexity of SJF to calculate average waiting time and Turnaround Time is O(nLogn).
+
+Constraints:
+
+1.	Job completion time must be known earlier, but it is hard to predict.
+2.	It is often used in a batch system for long term scheduling.
+3.	SJF can’t be implemented for CPU scheduling for short term. It is because there is no specific method to predict the length of upcoming CPU burst.
+4.	Requires a knowledge of how long a process will run.
+5.	It leads to the starvation that does not reduce average turnaround time.
+6.	It is hard to know the length of the upcoming CPU request.
+
+
+Additional Algorithm:
+
+We know that it is not Practically implementable because burst time of a process can’t be predicted in advance. But if you don’t know the length of the next CPU burst, then we can predict it. And we expect the next CPU burst will be similar in length to the previous one.
+And I assume arrival time for all the processes are 0 (because we have given that all the processes arrives at the same time).
+
+Test Cases:
+
+We select five processes with their arrival time and burst time. These processes are scheduled by Round Robin, 
+Preemptive  SJF  and  proposed algorithm.  We  calculate  and  compare  average waiting  time,  contest  switching  and 
+turnaround  time  of each  scheduling algorithm.  We  execute  many processes  sets and  calculate and  compare  them. 
+The example is shown below, 
+ 
+Table 1:A set of five processes with arrival time and burst time 
+Processes  Time of Arrival   Burst Duration (ms) 
+P1 
+P2 
+P3 
+P4 
+P5 
+0 
+2 
+5 
+6 
+8 
+4.0 
+7.0 
+5.0 
+8.0 
+9.0 
+ 
+1. Round Robin with quantum = 5 
+Gantt chart: 
+P1
+ 
+P2
+ 
+P3  P4
+ 
+P5  P2
+ 
+P4
+ 
+P5
+ 
+No. of context switches = 7  
+Average waiting time= 11.4 ms 
+Average turnaround time= 18ms 
+2. Shortest Remaining Job First: 
+Gant chart: 
+P1  P2  P3  P2  P4  P5   
+No. of context switches = 5 
+Average waiting time = 6.6 ms 
+Average turnaround time = 13.2ms   
+3. Proposed Algorithm 
+Gantt chart: 
+P1  P2  P3  P4  P5 
+No. of context switches = 4 
+Average waiting time= 6.8 ms 
+Average turnaround time= 13.4ms 
+We select five processes with their arrival time and burst time. These processes are scheduled by Round Robin, 
+Preemptive  SJF  and  proposed algorithm.  We  calculate  and  compare  average waiting  time,  contest  switching  and 
+turnaround  time  of each  scheduling algorithm.  We  execute  many processes  sets and  calculate and  compare  them. 
+The example is shown below, 
+ 
+Table 1:A set of five processes with arrival time and burst time 
+Processes  Time of Arrival   Burst Duration (ms) 
+P1 
+P2 
+P3 
+P4 
+P5 
+0 
+2 
+5 
+6 
+8 
+4.0 
+7.0 
+5.0 
+8.0 
+9.0 
+ 
+1. Round Robin with quantum = 5 
+Gantt chart: 
+P1
+ 
+P2
+ 
+P3  P4
+ 
+P5  P2
+ 
+P4
+ 
+P5
+ 
+No. of context switches = 7  
+Average waiting time= 11.4 ms 
+Average turnaround time= 18ms 
+2. Shortest Remaining Job First: 
+Gant chart: 
+P1  P2  P3  P2  P4  P5   
+No. of context switches = 5 
+Average waiting time = 6.6 ms 
+Average turnaround time = 13.2ms   
+3. Proposed Algorithm 
+Gantt chart: 
+P1  P2  P3  P4  P5 
+No. of context switches = 4 
+Average waiting time= 6.8 ms 
+Average turnaround time= 13.4ms 
+We select five processes with their arrival time and burst time. These processes are scheduled by Round Robin, 
+Preemptive  SJF  and  proposed algorithm.  We  calculate  and  compare  average waiting  time,  contest  switching  and 
+turnaround  time  of each  scheduling algorithm.  We  execute  many processes  sets and  calculate and  compare  them. 
+The example is shown below, 
+ 
+Table 1:A set of five processes with arrival time and burst time 
+Processes  Time of Arrival   Burst Duration (ms) 
+P1 
+P2 
+P3 
+P4 
+P5 
+0 
+2 
+5 
+6 
+8 
+4.0 
+7.0 
+5.0 
+8.0 
+9.0 
+ 
+1. Round Robin with quantum = 5 
+Gantt chart: 
+P1
+ 
+P2
+ 
+P3  P4
+ 
+P5  P2
+ 
+P4
+ 
+P5
+ 
+No. of context switches = 7  
+Average waiting time= 11.4 ms 
+Average turnaround time= 18ms 
+2. Shortest Remaining Job First: 
+Gant chart: 
+P1  P2  P3  P2  P4  P5   
+No. of context switches = 5 
+Average waiting time = 6.6 ms 
+Average turnaround time = 13.2ms   
+3. Proposed Algorithm 
+Gantt chart: 
+P1  P2  P3  P4  P5 
+No. of context switches = 4 
+Average waiting time= 6.8 ms 
+Average turnaround time= 13.4ms 
+We select five processes with their arrival time and burst time. These processes are scheduled by Round Robin, 
+Preemptive  SJF  and  proposed algorithm.  We  calculate  and  compare  average waiting  time,  contest  switching  and 
+turnaround  time  of each  scheduling algorithm.  We  execute  many processes  sets and  calculate and  compare  them. 
+The example is shown below, 
+ 
+Table 1:A set of five processes with arrival time and burst time 
+Processes  Time of Arrival   Burst Duration (ms) 
+P1 
+P2 
+P3 
+P4 
+P5 
+0 
+2 
+5 
+6 
+8 
+4.0 
+7.0 
+5.0 
+8.0 
+9.0 
+ 
+1. Round Robin with quantum = 5 
+Gantt chart: 
+P1
+ 
+P2
+ 
+P3  P4
+ 
+P5  P2
+ 
+P4
+ 
+P5
+ 
+No. of context switches = 7  
+Average waiting time= 11.4 ms 
+Average turnaround time= 18ms 
+2. Shortest Remaining Job First: 
+Gant chart: 
+P1  P2  P3  P2  P4  P5   
+No. of context switches = 5 
+Average waiting time = 6.6 ms 
+Average turnaround time = 13.2ms   
+3. Proposed Algorithm 
+Gantt chart: 
+P1  P2  P3  P4  P5 
+No. of context switches = 4 
+Average waiting time= 6.8 ms 
+Average turnaround time= 13.4ms 
+We select five processes with their arrival time and burst time. These processes are scheduled by Round Robin, 
+Preemptive  SJF  and  proposed algorithm.  We  calculate  and  compare  average waiting  time,  contest  switching  and 
+turnaround  time  of each  scheduling algorithm.  We  execute  many processes  sets and  calculate and  compare  them. 
+The example is shown below, 
+ 
+Table 1:A set of five processes with arrival time and burst time 
+Processes  Time of Arrival   Burst Duration (ms) 
+P1 
+P2 
+P3 
+P4 
+P5 
+0 
+2 
+5 
+6 
+8 
+4.0 
+7.0 
+5.0 
+8.0 
+9.0 
+ 
+1. Round Robin with quantum = 5 
+Gantt chart: 
+P1
+ 
+P2
+ 
+P3  P4
+ 
+P5  P2
+ 
+P4
+ 
+P5
+ 
+No. of context switches = 7  
+Average waiting time= 11.4 ms 
+Average turnaround time= 18ms 
+2. Shortest Remaining Job First: 
+Gant chart: 
+P1  P2  P3  P2  P4  P5   
+No. of context switches = 5 
+Average waiting time = 6.6 ms 
+Average turnaround time = 13.2ms   
+3. Proposed Algorithm 
+Gantt chart: 
+P1  P2  P3  P4  P5 
+No. of context switches = 4 
+Average waiting time= 6.8 ms 
+Average turnaround time= 13.4ms 
+We select five processes with their arrival time and burst time. These processes are scheduled by Round Robin, 
+Preemptive  SJF  and  proposed algorithm.  We  calculate  and  compare  average waiting  time,  contest  switching  and 
+turnaround  time  of each  scheduling algorithm.  We  execute  many processes  sets and  calculate and  compare  them. 
+The example is shown below, 
+ 
+Table 1:A set of five processes with arrival time and burst time 
+Processes  Time of Arrival   Burst Duration (ms) 
+P1 
+P2 
+P3 
+P4 
+P5 
+0 
+2 
+5 
+6 
+8 
+4.0 
+7.0 
+5.0 
+8.0 
+9.0 
+ 
+1. Round Robin with quantum = 5 
+Gantt chart: 
+P1
+ 
+P2
+ 
+P3  P4
+ 
+P5  P2
+ 
+P4
+ 
+P5
+ 
+No. of context switches = 7  
+Average waiting time= 11.4 ms 
+Average turnaround time= 18ms 
+2. Shortest Remaining Job First: 
+Gant chart: 
+P1  P2  P3  P2  P4  P5   
+No. of context switches = 5 
+Average waiting time = 6.6 ms 
+Average turnaround time = 13.2ms   
+3. Proposed Algorithm 
+Gantt chart: 
+P1  P2  P3  P4  P5 
+No. of context switches = 4 
+Average waiting time= 6.8 ms 
+Average turnaround time= 13.4ms 
+We select five processes with their arrival time and burst time. These processes are scheduled by Round Robin, 
+Preemptive  SJF  and  proposed algorithm.  We  calculate  and  compare  average waiting  time,  contest  switching  and 
+turnaround  time  of each  scheduling algorithm.  We  execute  many processes  sets and  calculate and  compare  them. 
+The example is shown below, 
+ 
+Table 1:A set of five processes with arrival time and burst time 
+Processes  Time of Arrival   Burst Duration (ms) 
+P1 
+P2 
+P3 
+P4 
+P5 
+0 
+2 
+5 
+6 
+8 
+4.0 
+7.0 
+5.0 
+8.0 
+9.0 
+ 
+1. Round Robin with quantum = 5 
+Gantt chart: 
+P1
+ 
+P2
+ 
+P3  P4
+ 
+P5  P2
+ 
+P4
+ 
+P5
+ 
+No. of context switches = 7  
+Average waiting time= 11.4 ms 
+Average turnaround time= 18ms 
+2. Shortest Remaining Job First: 
+Gant chart: 
+P1  P2  P3  P2  P4  P5   
+No. of context switches = 5 
+Average waiting time = 6.6 ms 
+Average turnaround time = 13.2ms   
+3. Proposed Algorithm 
+Gantt chart: 
+P1  P2  P3  P4  P5 
+No. of context switches = 4 
+Average waiting time= 6.8 ms 
+Average turnaround time= 13.4ms 
+We select five processes with their arrival time and burst time. These processes are scheduled by Round Robin, 
+Preemptive  SJF  and  proposed algorithm.  We  calculate  and  compare  average waiting  time,  contest  switching  and 
+turnaround  time  of each  scheduling algorithm.  We  execute  many processes  sets and  calculate and  compare  them. 
+The example is shown below, 
+ 
+Table 1:A set of five processes with arrival time and burst time 
+Processes  Time of Arrival   Burst Duration (ms) 
+P1 
+P2 
+P3 
+P4 
+P5 
+0 
+2 
+5 
+6 
+8 
+4.0 
+7.0 
+5.0 
+8.0 
+9.0 
+ 
+1. Round Robin with quantum = 5 
+Gantt chart: 
+P1
+ 
+P2
+ 
+P3  P4
+ 
+P5  P2
+ 
+P4
+ 
+P5
+ 
+No. of context switches = 7  
+Average waiting time= 11.4 ms 
+Average turnaround time= 18ms 
+2. Shortest Remaining Job First: 
+Gant chart: 
+P1  P2  P3  P2  P4  P5   
+No. of context switches = 5 
+Average waiting time = 6.6 ms 
+Average turnaround time = 13.2ms   
+3. Proposed Algorithm 
+Gantt chart: 
+P1  P2  P3  P4  P5 
+No. of context switches = 4 
+Average waiting time= 6.8 ms 
+Average turnaround time= 13.4ms
+We select five processes with their arrival time and burst time. These processes are scheduled by Round Robin, 
+Preemptive  SJF  and  proposed algorithm.  We  calculate  and  compare  average waiting  time,  contest  switching  and 
+turnaround  time  of each  scheduling algorithm.  We  execute  many processes  sets and  calculate and  compare  them. 
+The example is shown below, 
+ 
+Table 1:A set of five processes with arrival time and burst time 
+Processes  Time of Arrival   Burst Duration (ms) 
+P1 
+P2 
+P3 
+P4 
+P5 
+0 
+2 
+5 
+6 
+8 
+4.0 
+7.0 
+5.0 
+8.0 
+9.0 
+ 
+1. Round Robin with quantum = 5 
+Gantt chart: 
+P1
+ 
+P2
+ 
+P3  P4
+ 
+P5  P2
+ 
+P4
+ 
+P5
+ 
+No. of context switches = 7  
+Average waiting time= 11.4 ms 
+Average turnaround time= 18ms 
+2. Shortest Remaining Job First: 
+Gant chart: 
+P1  P2  P3  P2  P4  P5   
+No. of context switches = 5 
+Average waiting time = 6.6 ms 
+Average turnaround time = 13.2ms   
+3. Proposed Algorithm 
+Gantt chart: 
+P1  P2  P3  P4  P5 
+No. of context switches = 4 
+Average waiting time= 6.8 ms 
+Average turnaround time= 13.4ms
+We select five processes with their arrival time and burst time. These processes are scheduled by Round Robin, 
+Preemptive  SJF  and  proposed algorithm.  We  calculate  and  compare  average waiting  time,  contest  switching  and 
+turnaround  time  of each  scheduling algorithm.  We  execute  many processes  sets and  calculate and  compare  them. 
+The example is shown below, 
+ 
+Table 1:A set of five processes with arrival time and burst time 
+Processes  Time of Arrival   Burst Duration (ms) 
+P1 
+P2 
+P3 
+P4 
+P5 
+0 
+2 
+5 
+6 
+8 
+4.0 
+7.0 
+5.0 
+8.0 
+9.0 
+ 
+1. Round Robin with quantum = 5 
+Gantt chart: 
+P1
+ 
+P2
+ 
+P3  P4
+ 
+P5  P2
+ 
+P4
+ 
+P5
+ 
+No. of context switches = 7  
+Average waiting time= 11.4 ms 
+Average turnaround time= 18ms 
+2. Shortest Remaining Job First: 
+Gant chart: 
+P1  P2  P3  P2  P4  P5   
+No. of context switches = 5 
+Average waiting time = 6.6 ms 
+Average turnaround time = 13.2ms   
+3. Proposed Algorithm 
+Gantt chart: 
+P1  P2  P3  P4  P5 
+No. of context switches = 4 
+Average waiting time= 6.8 ms 
+Average turnaround time= 13.4ms
+We select five processes with their arrival time and burst time. These processes are scheduled by Round Robin, 
+Preemptive  SJF  and  proposed algorithm.  We  calculate  and  compare  average waiting  time,  contest  switching  and 
+turnaround  time  of each  scheduling algorithm.  We  execute  many processes  sets and  calculate and  compare  them. 
+The example is shown below, 
+ 
+Table 1:A set of five processes with arrival time and burst time 
+Processes  Time of Arrival   Burst Duration (ms) 
+P1 
+P2 
+P3 
+P4 
+P5 
+0 
+2 
+5 
+6 
+8 
+4.0 
+7.0 
+5.0 
+8.0 
+9.0 
+ 
+1. Round Robin with quantum = 5 
+Gantt chart: 
+P1
+ 
+P2
+ 
+P3  P4
+ 
+P5  P2
+ 
+P4
+ 
+P5
+ 
+No. of context switches = 7  
+Average waiting time= 11.4 ms 
+Average turnaround time= 18ms 
+2. Shortest Remaining Job First: 
+Gant chart: 
+P1  P2  P3  P2  P4  P5   
+No. of context switches = 5 
+Average waiting time = 6.6 ms 
+Average turnaround time = 13.2ms   
+3. Proposed Algorithm 
+Gantt chart: 
+P1  P2  P3  P4  P5 
+No. of context switches = 4 
+Average waiting time= 6.8 ms 
+Average turnaround time= 13.4ms
+We select five processes with their arrival time and burst time. These processes are scheduled by Round Robin, 
+Preemptive  SJF  and  proposed algorithm.  We  calculate  and  compare  average waiting  time,  contest  switching  and 
+turnaround  time  of each  scheduling algorithm.  We  execute  many processes  sets and  calculate and  compare  them. 
+The example is shown below, 
+ 
+Table 1:A set of five processes with arrival time and burst time 
+Processes  Time of Arrival   Burst Duration (ms) 
+P1 
+P2 
+P3 
+P4 
+P5 
+0 
+2 
+5 
+6 
+8 
+4.0 
+7.0 
+5.0 
+8.0 
+9.0 
+ 
+1. Round Robin with quantum = 5 
+Gantt chart: 
+P1
+ 
+P2
+ 
+P3  P4
+ 
+P5  P2
+ 
+P4
+ 
+P5
+ 
+No. of context switches = 7  
+Average waiting time= 11.4 ms 
+Average turnaround time= 18ms 
+2. Shortest Remaining Job First: 
+Gant chart: 
+P1  P2  P3  P2  P4  P5   
+No. of context switches = 5 
+Average waiting time = 6.6 ms 
+Average turnaround time = 13.2ms   
+3. Proposed Algorithm 
+Gantt chart: 
+P1  P2  P3  P4  P5 
+No. of context switches = 4 
+Average waiting time= 6.8 ms 
+Average turnaround time= 13.4ms
+We select five processes with their arrival time and burst time. These processes are scheduled by Round Robin, Preemptive SJF and proposed algorithm. We calculate and compare average waiting time, contest switching and turnaround time of each scheduling algorithm. We execute sets and calculate and compare them. 
+Process	Arrival Time	Burst Time
+P1	0	4
+P2	2	7
+P3	5	5
+P4	6	8
+P5	8	9
+		
+
+1.	Round Robin with quantum=5
+Gantt chart:
+P1	P2	P3	P4	P5	P2	P4	P5
+No. of context switches = 7
+Average waiting time= 11.4ms
+Average turnaround time= 18ms
+      
+2.	Shortest Remaining Job First:
+Gantt chart:
+P1	P2	P3	P2	P4	P5
+No. of context switches = 5
+Average waiting time = 6.6ms
+Average turnaround time = 13.2ms
+                                                                                                                                             
+3.	Proposed Algorithm:
+Gantt chart:
+P1	P2	P3	P4	P5
+No. of context switches = 4
+Average waiting time= 6.8ms
+Average turnaround time= 13.4ms
