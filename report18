@@ -1,0 +1,54 @@
+Description:
+
+In this problem, we are given that he process which has lowest CPU burst length has given the highest priority and vice-versa. In this problem, we have to take care for the higher priority process that they do not starve due to lower priority processes. 
+Firstly, the higher priority processes have the right to execute than the lower priority     can move further to execute. If the lower priority process is executing and in between higher priority task arrives than that process has to stop executing and the higher priority task will start the execution and the lower priority has to wait. But this problem of starvation can be solved by the process name ageing. It is a technique in which system gradually increases the priority of those processes which are waiting in the system for a long time.
+In this problem, the higher priority tasks will be executed first than others. If the higher priority tasks takes a lot of time than lower priority process has to wait for a long duration and it takes lower priority tasks to starvation.
+
+
+
+
+
+Algorithm:
+
+1.	Priority scheduling is a non-preemptive algorithm and one of the most common scheduling algorithms in batch systems.
+2.	Each process is assigned a priority. Process with highest priority is to be executed first and so on.
+3.	Processes with same priority are executed on first come first served basis.
+4.	Priority can be decided based on memory requirements, time requirements or any other resource requirement.
+
+Complexity:
+If the problem is unsorted then we have to find the process which is having the highest priority. So this is the worst case and in this scenario the complexity is O(n).
+And if the Processes are sorted as in this problem it is given that the lowest burst time process will have the higher priority. In this kind of implementation it reduces the time complexity and that is O(logn).
+
+Constraints:
+1.	The major constraint or problem of priority scheduling is the process of indefinite blocking or starvation. This problem appears when the process is ready to be executed but that process has to wait because another process with higher priority is executing.
+2.	In case if we are having the processes with the same priority then we have to use the 2nd scheduling algorithm.
+3.	If the system gets crashes eventually, then all the processes having low priority which are not finished yet also gets lost.
+
+Boundary Conditions:
+In code I have taken the boundary values for burst time that is 9999 and in problem we are given that there are n number of CPU processing but I have given only 100 number of  CPU processing here.
+
+Test cases:
+
+Process	Arrival Time	Burst Time	Priority
+P1	0	11	2
+P2	5	28	0
+P3	12	2	3
+P4	2	10	1
+P5	9	16	4
+
+
+
+Gantt chart:
+P1	P4	P2	P5	P3
+0                           11                          21                          49                          65                       67
+
+
+Process	Burst Time	Completion Time	Turn around Time	Waiting Time
+P1	11	3	8	0
+P2	28	9	3	2
+P3	2	11	9	7
+P4	10	12	9	8
+P5	16	16	12	8
+
+Average waiting Time= 5.0
+Average Turn Around Time = 8.2
